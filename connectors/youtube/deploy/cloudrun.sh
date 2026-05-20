@@ -60,6 +60,7 @@ trap 'rm -f "$TMP_CB"' EXIT
 cat > "$TMP_CB" <<EOF
 steps:
   - name: gcr.io/cloud-builders/docker
+    env: ['DOCKER_BUILDKIT=1']
     args: ['build', '-f', 'connectors/youtube/Dockerfile', '-t', '${IMAGE}', '.']
   - name: gcr.io/cloud-builders/docker
     args: ['push', '${IMAGE}']
