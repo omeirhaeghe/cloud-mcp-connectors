@@ -29,4 +29,7 @@ pnpm dev
 
 ## Status
 
-Foundation milestone in progress. See `/Users/oliviermeirhaeghe/.claude/plans/lucky-mapping-frog.md` for the full plan.
+Foundation milestone in progress.
+
+- `connectors/youtube` — deployed on Cloud Run; speaks MCP `2024-11-05` over streamable-HTTP at `/mcp` and exposes `youtube_search`, `youtube_get_video`, `youtube_list_channel_videos`.
+- Hosted admin UI + dispatcher — next.
