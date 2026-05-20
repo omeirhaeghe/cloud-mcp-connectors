@@ -18,6 +18,24 @@ Two ways, once a connector is ready:
 1. **Hosted** — sign up at the admin UI, paste your credentials, get an MCP URL to drop into your client.
 2. **Self-host** — run the connector's Docker image on Azure Container Apps, GCP Cloud Run, AWS Fargate, Render, Fly, or Kubernetes.
 
+## Deploy a connector
+
+Each connector ships a Dockerfile, so you can run it anywhere that runs containers. We also include opinionated one-shot deploy scripts for common targets.
+
+**Google Cloud Run (YouTube)** — the script provisions Artifact Registry, stores your API key in Secret Manager, builds via Cloud Build, and deploys the service:
+
+```bash
+export PROJECT_ID=your-gcp-project
+export YOUTUBE_API_KEY=your-key   # https://console.cloud.google.com/apis/credentials
+./connectors/youtube/deploy/cloudrun.sh
+```
+
+When it finishes, the script prints the `/mcp` URL — paste that into your MCP client and you're done.
+
+Optional overrides: `REGION` (default `us-central1`), `SERVICE` (default `youtube-connector`), `REPO` (default `cloud-connectors`). See `connectors/youtube/deploy/cloudrun.sh` for the full sequence.
+
+**Other targets** — Azure Container Apps, AWS Fargate, Render, Fly, Kubernetes: build the image from the connector's Dockerfile and pass the connector's required env vars (e.g. `YOUTUBE_API_KEY`). Reference scripts for these are on the roadmap.
+
 ## Repo layout
 
 ```
