@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@cloud-connectors/catalog": "workspace:*",
+    "@cloud-connectors/connector-xquik": "workspace:*",
     "@cloud-connectors/connector-youtube": "workspace:*",
     "@cloud-connectors/core": "workspace:*",
     "@cloud-connectors/crypto": "workspace:*",

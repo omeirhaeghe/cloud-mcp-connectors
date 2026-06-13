@@ -29,6 +29,9 @@ importers:
       '@cloud-connectors/catalog':
         specifier: workspace:*
         version: link:../../packages/catalog
+      '@cloud-connectors/connector-xquik':
+        specifier: workspace:*
+        version: link:../../connectors/xquik
       '@cloud-connectors/connector-youtube':
         specifier: workspace:*
         version: link:../../connectors/youtube
@@ -69,6 +72,31 @@ importers:
       tailwindcss:
         specifier: ^3.4.16
         version: 3.4.19(tsx@4.22.0)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@22.19.19)
+
+  connectors/xquik:
+    dependencies:
+      '@cloud-connectors/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@hono/node-server':
+        specifier: ^1.13.7
+        version: 1.19.14(hono@4.12.18)
+      hono:
+        specifier: ^4.6.14
+        version: 4.12.18
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      tsx:
+        specifier: ^4.19.2
+        version: 4.22.0
       typescript:
         specifier: ^5.7.2
         version: 5.9.3
