@@ -44,6 +44,24 @@ export const CATALOG: readonly CatalogEntry[] = [
     toolCount: 3,
   },
   {
+    id: 'xquik',
+    name: 'Xquik',
+    tagline: 'Search X/Twitter data',
+    description:
+      'Read-only access to Xquik for X/Twitter data workflows: search tweets, fetch tweet details, search users, and fetch profiles.',
+    category: 'media',
+    status: 'available',
+    homepage: 'https://docs.xquik.com/api-reference/overview',
+    iconKey: 'xquik',
+    auth: {
+      type: 'apiKey',
+      label: 'Xquik API key',
+      placeholder: 'xq_...',
+      docsUrl: 'https://docs.xquik.com/api-reference/overview',
+    },
+    toolCount: 4,
+  },
+  {
     id: 'gmail',
     name: 'Gmail',
     tagline: 'Read, search, and send mail',

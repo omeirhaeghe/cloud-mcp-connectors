@@ -3,6 +3,7 @@ import { decrypt, loadMasterKey } from '@cloud-connectors/crypto';
 import { dispatchMcp, McpError, type ConnectorDefinition } from '@cloud-connectors/core';
 import { hashToken } from '@cloud-connectors/storage';
 import youtubeConnector from '@cloud-connectors/connector-youtube';
+import xquikConnector from '@cloud-connectors/connector-xquik';
 import { getStore } from '@/lib/db';
 import { env } from '@/lib/env';
 
@@ -10,6 +11,7 @@ export const dynamic = 'force-dynamic';
 
 const CONNECTORS: Record<string, ConnectorDefinition> = {
   youtube: youtubeConnector,
+  xquik: xquikConnector,
 };
 
 let cachedKey: Uint8Array | null = null;
@@ -30,7 +32,10 @@ export async function GET(req: NextRequest, ctx: { params: Promise<{ connectorId
   const { connectorId } = await ctx.params;
   const connector = CONNECTORS[connectorId];
   if (!connector) {
-    return Response.json({ error: { code: 'not_found', message: 'unknown connector' } }, { status: 404 });
+    return Response.json(
+      { error: { code: 'not_found', message: 'unknown connector' } },
+      { status: 404 },
+    );
   }
   return Response.json({
     connector: connector.id,
@@ -44,7 +49,10 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ connectorI
   const { connectorId } = await ctx.params;
   const connector = CONNECTORS[connectorId];
   if (!connector) {
-    return Response.json({ error: { code: 'not_found', message: 'unknown connector' } }, { status: 404 });
+    return Response.json(
+      { error: { code: 'not_found', message: 'unknown connector' } },
+      { status: 404 },
+    );
   }
 
   try {
